@@ -1,0 +1,18 @@
+-- intelligent.IBSP_REITS_MONTH definition
+
+CREATE TABLE `IBSP_REITS_MONTH` (
+  `CODE` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `NAME` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `TIME` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  `CAR_FLOW` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `CAR_FLOW_LOOP` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  `CAR_FLOW_RATIO` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  `YEAR_ADD_FLOW` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `YEAR_ADD_FLOW_RATIO` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  `ROAD_TOLL` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `ROAD_TOLL_LOOP` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  `ROAD_TOLL_RATIO` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  `YEAR_ADD_TOLL` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `YEAR_ADD_TOLL_RATIO` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  UNIQUE KEY `uk_code_name_time` (`CODE`,`NAME`,`TIME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
