@@ -22,6 +22,7 @@ from langchain.agents import initialize_agent, AgentType
 from pydantic import BaseModel, Field
 from langchain_core.tools import tool
 from mysql_tools import sql_inster
+from langchain_openai import ChatOpenAI
 
 class QuestionRequest(BaseModel):
     file_name: str
@@ -49,7 +50,7 @@ def extract_pdf_content(pdf_path):
 
 # 文件上传知识库
 def upload_file(file_name):
-    file_path = "./sh/2025-07-13/{}".format(file_name)
+    file_path = "./sh/2025-07-31/{}".format(file_name)
     # 2. 分块处理
     content = extract_pdf_content(file_path)
     text_splitter = RecursiveCharacterTextSplitter(
@@ -74,7 +75,11 @@ def upload_file(file_name):
         "chunk_count": len(documents)
     })      
 
-llm = init_chat_model(model="qwen3:8b", model_provider="ollama")
+# llm = init_chat_model(model="qwen3:8b", model_provider="ollama")
+base_url='http://127.0.0.1:11434/v1/'
+model="qwen3:8b"
+api_key = "ollama"
+llm = ChatOpenAI(base_url=base_url, model=model, api_key=api_key)
 
 # 获取知识库信息
 def get_parse_result(file_name):
